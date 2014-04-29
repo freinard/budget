@@ -13,7 +13,7 @@ war/WEB-INF/classes/
 
 # intellij project files
 .idea
-.iml
+*.iml
 atlassian-ide-plugin.xml
 
 # maven build output dir
