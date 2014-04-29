@@ -12,6 +12,8 @@ war/WEB-INF/deploy/
 war/WEB-INF/classes/
 
 # intellij project files
+.idea
+.iml
 atlassian-ide-plugin.xml
 
 # maven build output dir
