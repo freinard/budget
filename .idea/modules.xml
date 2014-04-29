@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/budget.iml" filepath="$PROJECT_DIR$/budget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/budget-core/budget-core.iml" filepath="$PROJECT_DIR$/budget-core/budget-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/budget-fitnesse/budget-fitnesse.iml" filepath="$PROJECT_DIR$/budget-fitnesse/budget-fitnesse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/budget-web/budget-web.iml" filepath="$PROJECT_DIR$/budget-web/budget-web.iml" />
+    </modules>
+  </component>
+</project>
+
