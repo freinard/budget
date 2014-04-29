@@ -1,15 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>budget</artifactId>
         <groupId>budget</groupId>
         <version>0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
     <name>Budget Fitnesse</name>
     <artifactId>budget-fitnesse</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.fitnesse</groupId>
+            <artifactId>fitnesse</artifactId>
+            <version>20130530</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>budget-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-deps-for-fitnesse</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>fitnesse</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack-dependencies</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>${project.groupId}</groupId>
+                                            <artifactId>budget-core</artifactId>
+                                            <version>${project.version}</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>javax.inject</groupId>
+                                            <artifactId>javax.inject</artifactId>
+                                            <version>1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>log4j</groupId>
+                                            <artifactId>log4j</artifactId>
+                                            <version>1.2.16</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>aopalliance</groupId>
+                                            <artifactId>aopalliance</artifactId>
+                                            <version>1.0</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>ca.uhn.hapi</groupId>
+                                            <artifactId>hapi-base</artifactId>
+                                            <version>2.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>ca.uhn.hapi</groupId>
+                                            <artifactId>hapi-structures-v26</artifactId>
+                                            <version>2.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>commons-logging</groupId>
+                                            <artifactId>commons-logging</artifactId>
+                                            <version>1.1.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>commons-collections</groupId>
+                                            <artifactId>commons-collections</artifactId>
+                                            <version>3.2.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>commons-beanutils</groupId>
+                                            <artifactId>commons-beanutils</artifactId>
+                                            <version>1.8.3</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.slf4j</groupId>
+                                            <artifactId>slf4j-api</artifactId>
+                                            <version>1.6.4</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>com.google.guava</groupId>
+                                            <artifactId>guava</artifactId>
+                                            <version>11.0.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>joda-time</groupId>
+                                            <artifactId>joda-time</artifactId>
+                                            <version>2.1</version>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>ca.uhn.hapi</groupId>
+                                            <artifactId>hapi-structures-v23</artifactId>
+                                            <version>2.1</version>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

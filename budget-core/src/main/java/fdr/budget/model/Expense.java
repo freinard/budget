@@ -1,4 +1,4 @@
-package fdr.budget;
+package fdr.budget.model;
 
 public class Expense {
     private String name;
